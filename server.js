@@ -1,10 +1,19 @@
 const express = require('express');
 const { Pool } = require('pg');
+const axios = require('axios');
+const dotenv = require('dotenv');
+readline = require('readline');
+
+// Load environment variables from .env file
+dotenv.config()
+
+const apiKey = process.env.OPENAI_API_KEY;
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
-// Parsing json requests
+// Middleware: runs before request gets processed
+// Parses json object into a JS object we can use
 app.use(express.json());
 
 // PostgreSQL connection
@@ -16,13 +25,58 @@ const pool = new Pool({
     port: 5432
 });
 
+// Function to call the ChatGPT API
+async function callChatGPT(prompt) {
+    const url = "https://api.openai.com/v1/chat/completions";
 
-// Endpoint to handle user queries
+    const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+    };
+
+    const data = {
+        model: "gpt-3.5-turbo",
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: prompt },
+        ],
+    };
+
+    try {
+        const response = await axios.post(url, data, { headers });
+        const result = response.data.choices[0].message.content;
+        return result;
+    } catch (error) {
+        console.error(
+            "Error calling ChatGPT API:",
+            error.response ? error.response.data : error.message
+        );
+        throw error;
+    }
+}
+
+// User input grabber
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+// Prompt for user input
+rl.question("Enter your input: ", async (prompt) => {
+    try {
+        const response = await callChatGPT(prompt);
+        console.log("ChatGPT response:", response);
+    } catch (error) {
+        console.error("Error:", error.message);
+    } finally {
+        rl.close();
+    }
+});
+
+// Endpoint to handle functionality when user makes a post request to http://localhost:3001/api/query
 app.post('/api/query', async (req, res) => {
-    console.log('Headers:', req.headers);  // Log request headers
-    console.log('Raw body:', req.body);    // Log raw request body
-
     const { alloy, query, response } = req.body;
+
     if (!alloy || !query || !response) {
         return res.status(400).send('Missing required fields');
     }
