@@ -3,7 +3,8 @@ const { Pool } = require('pg');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const cors = require('cors');
-readline = require('readline');
+const fs = require('fs');
+const path = require('path');
 
 // Load environment variables from .env file
 dotenv.config()
@@ -28,6 +29,9 @@ const pool = new Pool({
     password: 'securepassword4265',
     port: 5432
 });
+
+// Grabs alloy data from local alloy database
+const alloysData = JSON.parse(fs.readFileSync(path.join(__dirname, 'alloys.json'), 'utf8'));
 
 // Function to call the ChatGPT API
 async function callChatGPT(prompt) {
@@ -63,8 +67,15 @@ app.post('/inquiry', async (req, res) => {
     const alloy = req.body.alloy;
     const inquiry = req.body.inquiry;
 
+    const alloyData = alloysData[alloy];
+    if (!alloyData) {
+        return res.status(400).send('Alloy not found');
+    }
+
+    const prompt = `Here is the data for ${alloy} alloy:\n${JSON.stringify(alloyData, null, 2)}\n\nUser Inquiry: ${inquiry}`;
+
     try{
-        const response = await callChatGPT(inquiry);
+        const response = await callChatGPT(prompt);
         res.send({response});
         console.log(response);
         const result = await pool.query(

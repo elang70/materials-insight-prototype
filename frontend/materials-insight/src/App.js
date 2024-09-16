@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -41,20 +40,27 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Materials Inquiry Prototype</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Enter the alloy you want to inquire about and ask your questions below
         </p>
         <form onSubmit={handleSubmit}>
-          <label for='alloy'>Choose an alloy to inquire about: </label>
-          <select id='alloy' name='alloy'>
-            <option value='alloy1'>Alloy 1</option>
-            <option value='alloy2'>Alloy 2</option>
-            <option value='alloy3'>Alloy 3</option>
-          </select>
-          <label>Enter inquiry: </label>
-          <input placeholder='Enter inquiry' name='inquiry'></input>
-          <input type='submit'></input>
+          <div className='form-group'>
+            <label htmlFor='alloy'>Choose an alloy to inquire about: </label>
+            <select id='alloy' name='alloy'>
+              <option value='az31'>AZ31</option>
+            </select>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='inquiry'>Enter your inquiry: </label>
+            <input 
+            type='text' 
+            id='inquiry' 
+            name='inquiry' 
+            placeholder='What do you want to know?'
+            required/>
+          </div>
+          <button type='submit' className="submit-button">Submit</button>
         </form>
           {response && <div><h3>Response:</h3><p>{response}</p></div>}
           {error && <div><h3>Error:</h3><p>{error}</p></div>}

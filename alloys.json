@@ -1,0 +1,50 @@
+{
+    "az31": {
+      "PhysicalProperties": {
+        "Density": {"Metric": "1.77 g/cc", "English": "0.0639 lb/in³"}
+      },
+      "MechanicalProperties": {
+        "HardnessBrinell": {"Value": "49", "Comments": "500 kg load, 10 mm ball"},
+        "TensileStrengthUltimate": {"Metric": "260 MPa", "English": "37700 psi"},
+        "TensileStrengthYield": {"Metric": "200 MPa", "English": "29000 psi"},
+        "ElongationAtBreak": {"Metric": "15 %", "English": "15 %"},
+        "TensileModulus": {"Metric": "45.0 GPa", "English": "6530 ksi"},
+        "CompressiveYieldStrength": {"Metric": "97.0 MPa", "English": "14100 psi"},
+        "UltimateBearingStrength": {"Metric": "385 MPa", "English": "55800 psi"},
+        "BearingYieldStrength": {"Metric": "230 MPa", "English": "33400 psi"},
+        "PoissonsRatio": {"Metric": "0.35", "English": "0.35"},
+        "ShearModulus": {"Metric": "17.0 GPa", "English": "2470 ksi"},
+        "ShearStrength": {"Metric": "130 MPa", "English": "18900 psi"},
+        "CharpyImpact": {"Metric": "4.30 J", "English": "3.17 ft-lb"}
+      },
+      "ElectricalProperties": {"ElectricalResistivity": {"Metric": "0.00000920 ohm-cm", "English": "0.00000920 ohm-cm"}},
+      "ThermalProperties": {
+        "HeatOfFusion": {"Metric": "340 J/g", "English": "146 BTU/lb"},
+        "CTELinear": [
+          {"Metric": "26.0 µm/m-°C", "English": "14.4 µin/in-°F", "TemperatureRange": "0.000 - 100 °C"},
+          {"Metric": "27.0 µm/m-°C", "English": "15.0 µin/in-°F", "TemperatureRange": "20.0 - 200 °C"}
+        ],
+        "SpecificHeatCapacity": {"Metric": "1.00 J/g-°C", "English": "0.239 BTU/lb-°F"},
+        "ThermalConductivity": {"Metric": "96.0 W/m-K", "English": "666 BTU-in/hr-ft²-°F"},
+        "MeltingPoint": {"Metric": "605 - 630 °C", "English": "1120 - 1170 °F"},
+        "Solidus": {"Metric": "605 °C", "English": "1120 °F"},
+        "Liquidus": {"Metric": "630 °C", "English": "1170 °F"}
+      },
+      "ProcessingProperties": {
+        "ProcessingTemperature": {"Metric": "230 - 425 °C", "English": "446 - 797 °F", "Comments": "Hot Working"},
+        "AnnealingTemperature": {"Metric": "345 °C", "English": "653 °F"}
+      },
+      "ComponentElementsProperties": {
+        "AluminumAl": {"Metric": "2.5 - 3.5 %", "English": "2.5 - 3.5 %"},
+        "CalciumCa": {"Metric": "<= 0.040 %", "English": "<= 0.040 %"},
+        "CopperCu": {"Metric": "<= 0.050 %", "English": "<= 0.050 %"},
+        "IronFe": {"Metric": "<= 0.0050 %", "English": "<= 0.0050 %"},
+        "MagnesiumMg": {"Metric": "96 %", "English": "96 %"},
+        "ManganeseMn": {"Metric": ">= 0.20 %", "English": ">= 0.20 %"},
+        "NickelNi": {"Metric": "<= 0.0050 %", "English": "<= 0.0050 %"},
+        "SiliconSi": {"Metric": "<= 0.10 %", "English": "<= 0.10 %"},
+        "ZincZn": {"Metric": "0.60 - 1.4 %", "English": "0.60 - 1.4 %"}
+      }
+    }
+  }
+  
