@@ -2,6 +2,7 @@ const express = require('express');
 const { Pool } = require('pg');
 const axios = require('axios');
 const dotenv = require('dotenv');
+const cors = require('cors');
 readline = require('readline');
 
 // Load environment variables from .env file
@@ -11,6 +12,8 @@ const apiKey = process.env.OPENAI_API_KEY;
 
 const app = express();
 const port = 3001;
+
+app.use(cors());
 
 // Middleware: runs before request gets processed
 // Parses json object into a JS object we can use
@@ -55,24 +58,6 @@ async function callChatGPT(prompt) {
         throw error;
     }
 }
-
-// User input grabber
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// });
-
-// Prompt for user input
-// rl.question("Enter your input: ", async (prompt) => {
-//     try {
-//         const response = await callChatGPT(prompt);
-//         console.log("ChatGPT response:", response);
-//     } catch (error) {
-//         console.error("Error:", error.message);
-//     } finally {
-//         rl.close();
-//     }
-// });
 
 // Endpoint to handle functionality when user makes a post request to http://localhost:3001/api/query
 app.post('/api/query', async (req, res) => {
