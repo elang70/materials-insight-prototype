@@ -15,6 +15,7 @@ const port = 3001;
 // Middleware: runs before request gets processed
 // Parses json object into a JS object we can use
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // PostgreSQL connection
 const pool = new Pool({
@@ -56,22 +57,22 @@ async function callChatGPT(prompt) {
 }
 
 // User input grabber
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
 
 // Prompt for user input
-rl.question("Enter your input: ", async (prompt) => {
-    try {
-        const response = await callChatGPT(prompt);
-        console.log("ChatGPT response:", response);
-    } catch (error) {
-        console.error("Error:", error.message);
-    } finally {
-        rl.close();
-    }
-});
+// rl.question("Enter your input: ", async (prompt) => {
+//     try {
+//         const response = await callChatGPT(prompt);
+//         console.log("ChatGPT response:", response);
+//     } catch (error) {
+//         console.error("Error:", error.message);
+//     } finally {
+//         rl.close();
+//     }
+// });
 
 // Endpoint to handle functionality when user makes a post request to http://localhost:3001/api/query
 app.post('/api/query', async (req, res) => {
@@ -90,6 +91,21 @@ app.post('/api/query', async (req, res) => {
         console.error(err);
         res.status(500).send('Server Error');
     }
+});
+
+app.post('/inquiry', async (req, res) => {
+    const alloy = req.body.alloy;
+    const inquiry = req.body.inquiry;
+
+    try{
+        const response = await callChatGPT(inquiry);
+        res.send({response});
+        console.log(response);
+    } catch (error) {
+        console.error('Error calling ChatGPT:', error);
+        res.status(500).send('Error calling ChatGPT')
+    }
+    
 });
 
 // Start up the server
