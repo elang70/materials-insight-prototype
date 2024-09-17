@@ -45,6 +45,51 @@
         "SiliconSi": {"Metric": "<= 0.10 %", "English": "<= 0.10 %"},
         "ZincZn": {"Metric": "0.60 - 1.4 %", "English": "0.60 - 1.4 %"}
       }
+    },
+    "ss316": {
+    "PhysicalProperties": {
+      "Density": {"Metric": "8.00 g/cc", "English": "0.289 lb/in³"}
+    },
+    "MechanicalProperties": {
+      "HardnessRockwellB": {"Value": "79", "Comments": ""},
+      "TensileStrengthUltimate": {"Metric": "580 MPa", "English": "84100 psi"},
+      "TensileStrengthYield": {"Metric": "290 MPa", "English": "42100 psi"},
+      "ElongationAtBreak": {"Metric": "50 %", "English": "50 %", "Comments": "in 50 mm"},
+      "TensileModulus": {"Metric": "193 GPa", "English": "28000 ksi"},
+      "IzodImpact": {"Metric": "129 J", "English": "95.1 ft-lb"},
+      "CharpyImpact": {"Metric": "105 J", "English": "77.4 ft-lb", "Comments": "V-notch"}
+    },
+    "ElectricalProperties": {
+      "ElectricalResistivity": {"Metric": "0.0000740 ohm-cm", "English": "0.0000740 ohm-cm", "Comments": "at 20ºC"},
+      "MagneticPermeability": {"Metric": "1.008", "English": "1.008", "Comments": "at RT"}
+    },
+    "ThermalProperties": {
+      "CTELinear": [
+        {"Metric": "16.0 µm/m-°C", "English": "8.89 µin/in-°F", "TemperatureRange": "0.000 - 100 °C"},
+        {"Metric": "16.2 µm/m-°C", "English": "9.00 µin/in-°F", "TemperatureRange": "0.000 - 315 °C"},
+        {"Metric": "17.5 µm/m-°C", "English": "9.72 µin/in-°F", "TemperatureRange": "0.000 - 540 °C"}
+      ],
+      "SpecificHeatCapacity": {"Metric": "0.500 J/g-°C", "English": "0.120 BTU/lb-°F", "TemperatureRange": "0.000 - 100 °C"},
+      "ThermalConductivity": {"Metric": "16.3 W/m-K", "English": "113 BTU-in/hr-ft²-°F", "TemperatureRange": "100 °C"},
+      "MeltingPoint": {"Metric": "1370 - 1400 °C", "English": "2500 - 2550 °F"},
+      "Solidus": {"Metric": "1370 °C", "English": "2500 °F"},
+      "Liquidus": {"Metric": "1400 °C", "English": "2550 °F"},
+      "MaximumServiceTemperatureAir": [
+        {"Metric": "870 °C", "English": "1600 °F", "Comments": "Intermittent"},
+        {"Metric": "925 °C", "English": "1700 °F", "Comments": "Continuous Service"}
+      ]
+    },
+    "ComponentElementsProperties": {
+      "CarbonC": {"Metric": "<= 0.080 %", "English": "<= 0.080 %"},
+      "ChromiumCr": {"Metric": "16 - 18 %", "English": "16 - 18 %"},
+      "IronFe": {"Metric": "61.8 - 72 %", "English": "61.8 - 72 %", "Comments": "As Remainder"},
+      "ManganeseMn": {"Metric": "<= 2.0 %", "English": "<= 2.0 %"},
+      "MolybdenumMo": {"Metric": "2.0 - 3.0 %", "English": "2.0 - 3.0 %"},
+      "NickelNi": {"Metric": "10 - 14 %", "English": "10 - 14 %"},
+      "PhosphorusP": {"Metric": "<= 0.045 %", "English": "<= 0.045 %"},
+      "SiliconSi": {"Metric": "<= 1.0 %", "English": "<= 1.0 %"},
+      "SulfurS": {"Metric": "<= 0.030 %", "English": "<= 0.030 %"}
     }
+  }
   }
   

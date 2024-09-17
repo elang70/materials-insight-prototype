@@ -64,6 +64,7 @@ async function callChatGPT(prompt) {
 }
 
 app.post('/inquiry', async (req, res) => {
+    console.log(req.body);
     const alloy = req.body.alloy;
     const inquiry = req.body.inquiry;
 

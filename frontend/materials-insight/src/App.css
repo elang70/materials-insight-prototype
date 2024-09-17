@@ -33,7 +33,7 @@ p {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: auto;
+  margin: 10px;
 }
 
 label {

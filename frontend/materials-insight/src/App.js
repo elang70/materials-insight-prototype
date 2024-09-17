@@ -49,6 +49,7 @@ function App() {
             <label htmlFor='alloy'>Choose an alloy to inquire about: </label>
             <select id='alloy' name='alloy'>
               <option value='az31'>AZ31</option>
+              <option value='ss316'>SS316</option>
             </select>
           </div>
           <div className='form-group'>
