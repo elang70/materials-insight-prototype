@@ -37,6 +37,25 @@ function App() {
     }
   };
 
+  const renderResponse = (response) => {
+    if (response.includes('\n')) {
+      const items = response.split('\n').filter(item => item.trim() !== '');
+      return (
+        <ul>
+          {items.map((item, index) => <li key={index}>{item}</li>)}
+        </ul>
+      );
+    }
+    if (response.includes('```')) {
+      // If response includes code-like formatting (with backticks), format it as code
+      const code = response.split('```')[1]; // Extract the code inside the backticks
+      return (
+        <pre><code>{code}</code></pre>
+      );
+    }
+    return <p>{response}</p>;
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -63,7 +82,7 @@ function App() {
           </div>
           <button type='submit' className="submit-button">Submit</button>
         </form>
-          {response && <div><h3>Response:</h3><p>{response}</p></div>}
+          {response && <div><h3>Response:</h3><p>{renderResponse(response)}</p></div>}
           {error && <div><h3>Error:</h3><p>{error}</p></div>}
       </header>
     </div>
