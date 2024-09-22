@@ -12,6 +12,7 @@ function App() {
     const data = {
       alloy: formData.get('alloy'),
       inquiry: formData.get('inquiry'),
+      inquiryType: formData.get('inquiryType'),
     };
 
     try {
@@ -69,6 +70,13 @@ function App() {
             <select id='alloy' name='alloy'>
               <option value='az31'>AZ31</option>
               <option value='ss316'>SS316</option>
+            </select>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='inquiryType'>Enter inquiry type: </label>
+            <select id='inquiryType' name='inquiryType'>
+              <option value='property'>Property</option>
+              <option value='graph'>Graph</option>
             </select>
           </div>
           <div className='form-group'>

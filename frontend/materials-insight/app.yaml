@@ -1,0 +1,15 @@
+runtime: nodejs18 # or your specific Node.js version
+
+handlers:
+# Serve all static files with url ending with a file extension
+- url: /(.*\..+)$
+  static_files: build/\1
+  upload: build/(.*\..+)$
+
+# Catch all handler to index.html
+- url: /.*
+  static_files: build/index.html
+  upload: build/index.html
+
+env_variables:
+  NODE_ENV: 'production'

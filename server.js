@@ -67,13 +67,23 @@ app.post('/inquiry', async (req, res) => {
     console.log(req.body);
     const alloy = req.body.alloy;
     const inquiry = req.body.inquiry;
+    const inquiryType =  req.body.inquiryType;
 
     const alloyData = alloysData[alloy];
     if (!alloyData) {
         return res.status(400).send('Alloy not found');
     }
 
-    const prompt = `Here is the data for ${alloy} alloy:\n${JSON.stringify(alloyData, null, 2)}\n\nUser Inquiry: ${inquiry}`;
+    let prompt;
+
+    if (inquiryType == 'graph') {
+        prompt = `Give me python code for the following inquiry, Here is the data for ${alloy} alloy:\n${JSON.stringify(alloyData, null, 2)}\n\nUser Inquiry: ${inquiry}`;
+    } else {
+        prompt = `Here is the data for ${alloy} alloy:\n${JSON.stringify(alloyData, null, 2)}\n\nUser Inquiry: ${inquiry}`;
+    }
+
+    console.log('PROMPT ---->', prompt);
+    
 
     try{
         const response = await callChatGPT(prompt);
