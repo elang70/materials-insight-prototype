@@ -1,4 +1,4 @@
-How to set up and run prototype:
+# How to set up and run prototype:
 
 1. Download code into local machine
 2. In a terminal, navigate to root directory of the project and run 'node server.js'
