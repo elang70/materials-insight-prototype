@@ -6,5 +6,3 @@
 4. Select alloy to inquire about, inquiry type, and then enter your inquiry
 
 
-Deployed app can be found here: http://materials-435923.appspot.com/ 
-(Couldn't figure out how to connect node server to deployed app)
